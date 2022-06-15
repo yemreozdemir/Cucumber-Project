@@ -4,8 +4,11 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -52,6 +55,21 @@ public class BrowserUtils {
     // this method will verify if the current title contains expected one.
     public static void verifyURLContains(String expectedTitle){
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedTitle));
+    }
+
+    public static List<String> dropdownOptionsAsString(WebElement dropdpwnElement){
+        Select select = new Select(dropdpwnElement);
+
+        //List of all actual month <options> as a web element
+        List<WebElement> actualOptionsAsWebElement = select.getOptions();
+
+        //List of all actual month <options> as a string
+        List<String> actualOptionsAsString = new ArrayList<>();
+
+        for(WebElement each : actualOptionsAsWebElement){
+            actualOptionsAsString.add(each.getText());
+        }
+        return actualOptionsAsString;
     }
 
 }
