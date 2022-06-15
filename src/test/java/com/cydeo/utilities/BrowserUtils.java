@@ -48,4 +48,10 @@ public class BrowserUtils {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.invisibilityOf(webElement));
     }
+
+    // this method will verify if the current title contains expected one.
+    public static void verifyURLContains(String expectedTitle){
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedTitle));
+    }
+
 }
