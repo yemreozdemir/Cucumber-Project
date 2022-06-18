@@ -26,6 +26,7 @@ public class Order_StepDefinitions {
        //clicking to order link to go order page
         basePage.order.click();
     }
+
     @When("user selects product type {string}")
     public void user_selects_product_type(String string) {
         Select select = new Select(orderPage.productDropdown);
