@@ -1,12 +1,14 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.CalculatorPage;
+import com.cydeo.pages.PercentageCalculatorPage;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 import java.util.Map;
 
@@ -36,6 +38,18 @@ public class Calculator_StepDefinitions {
     @Then("User should see following calculation results")
     public void user_should_see_following_calculation_results(Map<Integer,Integer> valuesMap) {
         System.out.println("valuesMap = " + valuesMap);
+        PercentageCalculatorPage page = new PercentageCalculatorPage();
+        page.percent.sendKeys("5");
+
+        for(Integer inputKey : valuesMap.keySet()){
+            page.input.clear();
+            page.input.sendKeys(""+inputKey+ Keys.ENTER);
+
+            System.out.println("inputValue = " + inputKey);
+            System.out.println("Expected value of %5 is = "+valuesMap.get(inputKey));
+
+            System.out.println("Actual value from web page = "+page.result.getAttribute("value"));
+        }
     }
 
 
