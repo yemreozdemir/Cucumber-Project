@@ -49,6 +49,10 @@ public class Calculator_StepDefinitions {
             System.out.println("Expected value of %5 is = "+valuesMap.get(inputKey));
 
             System.out.println("Actual value from web page = "+page.result.getAttribute("value"));
+
+            Assert.assertEquals(valuesMap.get(inputKey),Integer.valueOf(page.result.getAttribute("value")));
+            //Assert.assertEquals(valuesMap.get(inputKey),page.result.getAttribute("value")); 
+            // we can use above if we change our map's data type to String
         }
     }
 

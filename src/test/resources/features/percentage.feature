@@ -1,7 +1,6 @@
 Feature: Calculate different percentage values
 
-  @wip
-  Scenario: Usert calculates %5 results
+  Scenario: User calculates %5 results
     Given User is on percentage calculator page
     Then User should see following calculation results
       | 100  | 5   |
