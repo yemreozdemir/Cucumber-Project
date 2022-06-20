@@ -10,17 +10,17 @@ In this class we will be able to pass pre-post conditions to each scenario and e
  */
 public class Hooks {
     // import from io.cucumber.java, not from junit
-    @Before
+    //@Before
     public void setupScenario(){
         System.out.println("====Setting up browser using cucumber @Before");
     }
 
-    @Before (value = "@login",order = 1)
+    //@Before (value = "@login",order = 1)
     public void setupScenarioForLogins(){
         System.out.println("====This will only apply to scenarios with @login tag");
     }
 
-    @Before (value = "@db",order = -1)
+   // @Before (value = "@db",order = -1)
     public void setupForDatabaseScenarios(){
         System.out.println("====This will only apply to scenarios with @db tag");
     }
