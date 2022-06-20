@@ -72,6 +72,8 @@ public class BrowserUtils {
         return actualOptionsAsString;
     }
 
+    // this method will accept a list of web element
+    //It will loop through the list and click to the radio button with provided attribute value
     public static void clickRadioButton(List<WebElement> radioButtons,String attributeValue){
 
         for (WebElement each : radioButtons) {
@@ -80,4 +82,7 @@ public class BrowserUtils {
             }
         }
     }
+
+
+
 }
