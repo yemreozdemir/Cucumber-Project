@@ -14,7 +14,7 @@ public class OrderPage extends BasePage{
     @FindBy(name = "product")
     public WebElement productDropdown;
 
-    @FindBy(name = "quantityt")
+    @FindBy(name = "quantity")
     public WebElement inputQuantity;
 
     @FindBy(name = "name")

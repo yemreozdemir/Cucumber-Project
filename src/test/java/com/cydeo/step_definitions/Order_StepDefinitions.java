@@ -33,8 +33,12 @@ public class Order_StepDefinitions {
         select.selectByVisibleText(string);
     }
     @When("user enters quantity {int}")
-    public void user_enters_quantity(Integer int1) {
-
+    public void user_enters_quantity(int arg0) {
+        // clear() method will delete whatever is in the inputBox
+        orderPage.inputQuantity.clear();
+        // since sendKeys method accepts only String, we need to either concat with "" or send String.val
+        orderPage.inputQuantity.sendKeys(arg0 + "");
+        //orderPage.inputQuantity.sendKeys(String.valueOf(arg0));
     }
     @When("user enters customer name {string}")
     public void user_enters_customer_name(String string) {
