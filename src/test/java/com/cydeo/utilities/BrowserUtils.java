@@ -57,8 +57,8 @@ public class BrowserUtils {
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedTitle));
     }
 
-    public static List<String> dropdownOptionsAsString(WebElement dropdpwnElement){
-        Select select = new Select(dropdpwnElement);
+    public static List<String> dropdownOptionsAsString(WebElement dropdownElement){
+        Select select = new Select(dropdownElement);
 
         //List of all actual month <options> as a web element
         List<WebElement> actualOptionsAsWebElement = select.getOptions();
@@ -72,4 +72,12 @@ public class BrowserUtils {
         return actualOptionsAsString;
     }
 
+    public static void clickRadioButton(List<WebElement> radioButtons,String attributeValue){
+
+        for (WebElement each : radioButtons) {
+            if(each.getAttribute("value").equalsIgnoreCase(attributeValue)){
+                each.click();
+            }
+        }
+    }
 }
