@@ -17,7 +17,7 @@ public class CalculatorPage {
     }
 
     @FindBy(id = "sciOutPut")
-    public WebElement output;
+    public WebElement outPut;
 
 
 }
