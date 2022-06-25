@@ -1,4 +1,4 @@
-@wip
+
 Feature: Wikipedia search functionality and verifications
 
   #WSF-45234 --> potential jira ticket number
