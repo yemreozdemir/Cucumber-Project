@@ -11,6 +11,9 @@ public class DicePage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+    @FindBy(xpath = "//input[@value='Job Search']")
+    public WebElement jobSearchButton;
+
     @FindBy(id = "typeaheadInput")
     public WebElement keywordBox;
 

@@ -19,7 +19,8 @@ public class Dice_StepDefinitions {
     }
     @When("User enters keyword and zipcode")
     public void user_enters_keyword_and_zipcode() {
-        System.out.println("User is entering java and 22102 zip code and click search button");
+        System.out.println("First user clicks jobSearch, then User is entering java and 22102 zip code and click search button");
+        dicePage.jobSearchButton.click();
         dicePage.keywordBox.sendKeys("java");
         dicePage.zipCodeBox.sendKeys("22102"+ Keys.ENTER);
     }
