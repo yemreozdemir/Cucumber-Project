@@ -1,4 +1,4 @@
-package com.cydeo.tests;
+package com.cydeo.apachePOI_read_write_excel;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ExcelRead {
