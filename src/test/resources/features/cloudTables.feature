@@ -15,7 +15,6 @@ Feature: DDT example with CloudTables
 
 # change this scenario into DDT format---> turn it into scenario outline
 
-
   Scenario Outline:
     Given User is on cloudTables homepage
     When User clicks on New button

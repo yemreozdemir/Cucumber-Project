@@ -35,8 +35,8 @@ public class Calculator_StepDefinitions {
         System.out.println("User is on the percentage page");
         Driver.getDriver().get(ConfigurationReader.getProperty("percentage.url"));
     }
-    @Then("User should see fallowing calculation results")
-    public void user_should_see_fallowing_calculation_results(Map<String,String> valuesMap) {
+    @Then("User should see following calculation results")
+    public void user_should_see_following_calculation_results(Map<String,String> valuesMap) {
         System.out.println("valuesMap = " + valuesMap);
         PercentageCalculatorPage page = new PercentageCalculatorPage();
         page.percent.sendKeys("5");
