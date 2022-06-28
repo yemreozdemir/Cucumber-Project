@@ -1,3 +1,4 @@
+@smoke
 Feature: Dice job search
   As a user I should be able to search for jobs, using a key word and zip code, then see results in total
 
