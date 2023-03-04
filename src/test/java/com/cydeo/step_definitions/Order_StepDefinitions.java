@@ -11,10 +11,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.List;
 
 public class Order_StepDefinitions {
 
@@ -27,7 +25,7 @@ public class Order_StepDefinitions {
     public void user_is_already_logged_in_and_on_order_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("web.table.url"));
 
-        //Calling our login method to login to web table app
+        //Calling our login method to log in to web table app
        webTableLoginPage.login();
 
        //clicking to order link to go order page
@@ -43,7 +41,10 @@ public class Order_StepDefinitions {
     @When("user enters quantity {int}")
     public void user_enters_quantity(int arg0) {
         // clear() method will delete whatever is in the inputBox
-        orderPage.inputQuantity.clear();
+        //orderPage.inputQuantity.clear(); ===> bazen çalışmıyor!!!
+        // imitating pressing back_space button from keyboard to delete
+        orderPage.inputQuantity.sendKeys(Keys.BACK_SPACE);
+
         // since sendKeys method accepts only String, we need to either concat with "" or send String.val
         orderPage.inputQuantity.sendKeys(arg0 + "");
         //orderPage.inputQuantity.sendKeys(String.valueOf(arg0));

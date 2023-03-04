@@ -28,7 +28,7 @@ Feature: Wikipedia search functionality and verifications
       | Cristiano Ronaldo | Cristiano Ronaldo | Cristiano Ronaldo  |
       | Bob Marley        | Bob Marley        | Bob Marley         |
       | Chuck Norris      | Chuck Norris      | Chuck Norris       |
-      | Antony Hopkins    | Antony Hopkins    | Antony Hopkins     |
+      | Anthony Hopkins    | Anthony Hopkins    | Anthony Hopkins     |
     #BREAK UNTIL 11.10AM CST
 
     Examples:

@@ -11,74 +11,102 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class BrowserUtils {
 
-    public static void sleep(int seconds){
-        seconds*=1000;
-        try{
-            Thread.sleep(seconds);
-        }catch(InterruptedException e){
+    /*
+This method will accept int (in seconds) and execute Thread.sleep
+for given duration
+ */
+    public static void sleep(int second){
+        second *=1000;
+        try {
+            Thread.sleep(second);
+        }catch (InterruptedException e ) {
 
         }
     }
 
-    public static void switchWindowAndVerify (String expectedUrl, String expectedTitle) {
+    /*
+    This method accepts 3 arguments.
+    Arg1: webdriver
+    Arg2: expectedInUrl : for verify if the url contains given String.
+        - If condition matches, will break loop.
+    Arg3: expectedInTitle to be compared against actualTitle
+     */
+    public static void switchWindowAndVerify(String expectedInUrl, String expectedInTitle){
 
         Set<String> allWindowsHandles = Driver.getDriver().getWindowHandles();
 
         for (String each : allWindowsHandles) {
+
             Driver.getDriver().switchTo().window(each);
-            System.out.println("Current URL: "+Driver.getDriver().getCurrentUrl());
-            if(Driver.getDriver().getCurrentUrl().contains(expectedUrl)){
+
+            System.out.println("Current URL: " + Driver.getDriver().getCurrentUrl());
+
+            if (Driver.getDriver().getCurrentUrl().contains(expectedInUrl)){
                 break;
             }
         }
+
+        //5. Assert:Title contains “expectedInTitle”
         String actualTitle = Driver.getDriver().getTitle();
-        Assert.assertTrue(actualTitle.contains(expectedTitle));
-    }
-
-    public static void verifyTitle(String expectedTitle) {
-
-        Assert.assertEquals(Driver.getDriver().getTitle(),expectedTitle);
+        Assert.assertTrue(actualTitle.contains(expectedInTitle));
     }
 
     /*
-    Creating a utility method for ExplicitWait, so we don't have to repeat the lines
+    This method accepts a String "expectedTitle" and Asserts if it is true
      */
-    public static void waitForInvisibilityOf(WebElement webElement){
-        Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-        wait.until(ExpectedConditions.invisibilityOf(webElement));
+    public static void verifyTitle(String expectedTitle){
+
+        Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
+
     }
 
-    // this method will verify if the current title contains expected one.
-    public static void verifyURLContains(String expectedTitle){
-        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedTitle));
+    /**
+     * This method will accept a String as expected value and verify actual URL CONTAINS the value.
+     * @param expectedInURL
+     */
+    public static void verifyURLContains(String expectedInURL){
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInURL));
     }
 
+
+    /**
+     * This method will accept a dropdown as a WebElement
+     * and return all the options' text in a List of String.
+     * @param dropdownElement
+     * @return List<String> actualOptionsAsString
+     */
     public static List<String> dropdownOptionsAsString(WebElement dropdownElement){
         Select select = new Select(dropdownElement);
 
-        //List of all actual month <options> as a web element
+        //List of all ACTUAL month <options> as a web element
         List<WebElement> actualOptionsAsWebElement = select.getOptions();
 
-        //List of all actual month <options> as a string
-        List<String> actualOptionsAsString = new ArrayList<>();
+        //List of all ACTUAL month <options> as a string
+        List<String> actualOptionsAsString= new ArrayList<>();
 
-        for(WebElement each : actualOptionsAsWebElement){
+        for (WebElement each : actualOptionsAsWebElement) {
             actualOptionsAsString.add(each.getText());
         }
-        return actualOptionsAsString;
+
+        return  actualOptionsAsString;
+
     }
 
-    // this method will accept a list of web element
-    //It will loop through the list and click to the radio button with provided attribute value
-    public static void clickRadioButton(List<WebElement> radioButtons,String attributeValue){
+
+    /**
+     * This method will accept a group radio buttons as a List of WebElement.
+     * It will loop through the List, and click to the radio button with provided attributeValue
+     * @param radioButtons
+     * @param attributeValue
+     */
+    public static void clickRadioButton(List<WebElement> radioButtons, String attributeValue){
 
         for (WebElement each : radioButtons) {
-            if(each.getAttribute("value").equalsIgnoreCase(attributeValue)){
+
+            if (each.getAttribute("value").equalsIgnoreCase(attributeValue)){
                 each.click();
             }
         }
@@ -184,7 +212,7 @@ public class BrowserUtils {
      * @param timeout
      * @return
      */
-    public static WebElement waitForClickability(WebElement element, int timeout) {
+    public static WebElement waitForClickablility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
@@ -196,7 +224,7 @@ public class BrowserUtils {
      * @param timeout
      * @return
      */
-    public static WebElement waitForClickability(By locator, int timeout) {
+    public static WebElement waitForClickablility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
@@ -390,9 +418,10 @@ public class BrowserUtils {
      *
      * @param element
      */
-    public static void executeJSCommand(WebElement element, String command) {
+    public static void executeJScommand(WebElement element, String command) {
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         jse.executeScript(command, element);
+
     }
 
     /**
@@ -400,7 +429,7 @@ public class BrowserUtils {
      *
      * @param command
      */
-    public static void executeJSCommand(String command) {
+    public static void executeJScommand(String command) {
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         jse.executeScript(command);
 

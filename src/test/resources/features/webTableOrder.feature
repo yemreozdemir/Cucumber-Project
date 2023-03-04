@@ -1,4 +1,4 @@
-@smoke
+@smoke @Order
 Feature: Web table user order feature
 
 Scenario: User should be able to place order and order seen in web table
